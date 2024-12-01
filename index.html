@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar with Dropdown Menus</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ['./*.html'],
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+</head>
+
+
+<body class="bg-gray-100 flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white flex flex-col h-screen">
+        <!-- header name and icon   -->
+        <div class="p-4 text-2xl font-bold text-center">My Sidebar</div>
+        <nav class="flex-1">
+            <!-- Menu Item 1 -->
+            <div class="px-4 py-2 cursor-pointer hover:bg-gray-700" onclick="toggleDropdown('menu1')">
+                <div class="flex justify-between items-center">
+                    <span>Dashboard</span>
+                    <svg class="w-4 h-4 transition-transform" id="icon-menu1" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
+            <div id="menu1" class="hidden bg-gray-700">
+                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Submenu 1</a>
+                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Submenu 2</a>
+            </div>
+
+            <!-- Menu Item 2 -->
+            <div class="px-4 py-2 cursor-pointer hover:bg-gray-700" onclick="toggleDropdown('menu2')">
+                <div class="flex justify-between items-center">
+                    <span>Settings</span>
+                    <svg class="w-4 h-4 transition-transform" id="icon-menu2" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
+            <div id="menu2" class="hidden bg-gray-700">
+                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Profile</a>
+                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Account</a>
+            </div>
+
+            <!-- Menu Item 3 -->
+            <div class="px-4 py-2 cursor-pointer hover:bg-gray-700" onclick="toggleDropdown('menu3')">
+                <div class="flex justify-between items-center">
+                    <span>Reports</span>
+                    <svg class="w-4 h-4 transition-transform" id="icon-menu3" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
+            <div id="menu3" class="hidden bg-gray-700">
+                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Monthly</a>
+                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Annual</a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        <h1 class="text-3xl font-bold text-gray-800">Main Content Area</h1>
+        <p class="mt-4 text-gray-600">This is where the main content goes.</p>
+    </main>
+
+    <script>
+        function toggleDropdown(menuId) {
+            const menu = document.getElementById(menuId);
+            const icon = document.getElementById('icon-' + menuId);
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+
+</html>
