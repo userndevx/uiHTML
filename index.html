@@ -4,92 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar with Dropdown Menus</title>
+    <title>Soft UI Sidebar</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            content: ['./*.html'],
             theme: {
-                extend: {}
-            }
-        }
+                extend: {
+                    boxShadow: {
+                        'soft': '0 4px 6px rgba(0, 0, 0, 0.1)',
+                        'hover': '0 2px 4px rgba(0, 0, 0, 0.2)',
+                    },
+                    colors: {
+                        'sidebar-bg': '#f8f9fa',
+                        'active-item': '#4c51bf',
+                        'hover-bg': '#e4e7eb',
+                    },
+                },
+            },
+        };
     </script>
 </head>
 
-
-<body class="bg-gray-100 flex min-h-screen">
+<body class="flex bg-gray-100 min-h-screen">
     <!-- Sidebar -->
-    <aside class="w-64 bg-gray-800 text-white flex flex-col h-screen">
-        <!-- header name and icon   -->
-        <div class="p-4 text-2xl font-bold text-center">My Sidebar</div>
-        <nav class="flex-1">
-            <!-- Menu Item 1 -->
-            <div class="px-4 py-2 cursor-pointer hover:bg-gray-700" onclick="toggleDropdown('menu1')">
-                <div class="flex justify-between items-center">
-                    <span>Dashboard</span>
-                    <svg class="w-4 h-4 transition-transform" id="icon-menu1" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
+    <aside class="w-64 bg-sidebar-bg h-screen shadow-soft p-4">
+        <div class="mb-8">
+            <div class="text-2xl font-semibold text-gray-800 flex items-center space-x-2">
+                <span>Soft UI Dashboard PRO</span>
             </div>
-            <div id="menu1" class="hidden bg-gray-700">
-                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Submenu 1</a>
-                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Submenu 2</a>
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+            <div>
+                <div class="text-gray-500 text-xs uppercase mb-2">Pages</div>
+                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-hover-bg shadow-soft">
+                    <span class="bg-pink-500 p-2 rounded-md text-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h11M9 21V9a3 3 0 013-3V3a3 3 0 013 3v1a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3z">
+                            </path>
+                        </svg>
+                    </span>
+                    <span class="ml-3 text-gray-700 font-medium">Dashboards</span>
+                </a>
+
+                <a href="#" class="flex items-center px-4 py-3 mt-2 rounded-lg hover:bg-hover-bg">
+                    <span class="bg-indigo-500 p-2 rounded-md text-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 15a4 4 0 100 8h18a4 4 0 100-8H3z"></path>
+                        </svg>
+                    </span>
+                    <span class="ml-3 text-gray-700 font-medium">Pages</span>
+                </a>
             </div>
 
-            <!-- Menu Item 2 -->
-            <div class="px-4 py-2 cursor-pointer hover:bg-gray-700" onclick="toggleDropdown('menu2')">
-                <div class="flex justify-between items-center">
-                    <span>Settings</span>
-                    <svg class="w-4 h-4 transition-transform" id="icon-menu2" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-            </div>
-            <div id="menu2" class="hidden bg-gray-700">
-                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Profile</a>
-                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Account</a>
-            </div>
-
-            <!-- Menu Item 3 -->
-            <div class="px-4 py-2 cursor-pointer hover:bg-gray-700" onclick="toggleDropdown('menu3')">
-                <div class="flex justify-between items-center">
-                    <span>Reports</span>
-                    <svg class="w-4 h-4 transition-transform" id="icon-menu3" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-            </div>
-            <div id="menu3" class="hidden bg-gray-700">
-                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Monthly</a>
-                <a href="#" class="block px-8 py-2 hover:bg-gray-600">Annual</a>
+            <div class="mt-8">
+                <div class="text-gray-500 text-xs uppercase mb-2">Docs</div>
+                <a href="#" class="flex items-center px-4 py-3 rounded-lg hover:bg-hover-bg">
+                    <span class="bg-green-500 p-2 rounded-md text-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4m2 0H4a2 2 0 000 4h6a2 2 0 002-2z"></path>
+                        </svg>
+                    </span>
+                    <span class="ml-3 text-gray-700 font-medium">Basic</span>
+                </a>
             </div>
         </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="flex-1 p-8">
-        <h1 class="text-3xl font-bold text-gray-800">Main Content Area</h1>
-        <p class="mt-4 text-gray-600">This is where the main content goes.</p>
+        <h1 class="text-3xl font-bold text-gray-800">Main Content</h1>
     </main>
-
-    <script>
-        function toggleDropdown(menuId) {
-            const menu = document.getElementById(menuId);
-            const icon = document.getElementById('icon-' + menuId);
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                menu.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
-        }
-    </script>
 </body>
 
 </html>
